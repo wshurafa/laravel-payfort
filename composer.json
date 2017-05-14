@@ -1,0 +1,37 @@
+{
+  "name": "wshurafa/laravel-payfort",
+  "description": "Laravel-payfort is a simple package to process payments throught Payfort payment gateway.",
+  "keywords": [
+    "http",
+    "payment",
+    "payfort",
+    "laravel payfort"
+  ],
+  "authors": [
+    {
+      "name": "Wael AlShurafa",
+      "email": "wael.shorafa@gmail.com"
+    }
+  ],
+  "support": {
+    "issues": "https://github.com/wshurafa/laravel-payfort/issues",
+    "source": "https://github.com/wshurafa/laravel-payfort"
+  },
+  "type": "library",
+  "license": "MIT",
+  "require": {
+    "php": ">=5.5.9",
+    "illuminate/support": "~5.0",
+    "nesbot/carbon": "~1.0",
+    "guzzlehttp/guzzle": "~5.0|~6.0"
+  },
+  "require-dev": {
+    "phpunit/phpunit": "~4.0",
+    "fabpot/goutte": "~3.2"
+  },
+  "autoload": {
+    "psr-4": {
+      "LaravelPayfort\\": "src/"
+    }
+  }
+}
