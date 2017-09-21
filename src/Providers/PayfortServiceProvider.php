@@ -26,7 +26,6 @@ class PayfortServiceProvider extends ServiceProvider
      */
     public function boot()
     {
-        parent::boot();
 
         # Add config file to service provider publish command
         $this->publishes([
