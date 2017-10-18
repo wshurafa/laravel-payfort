@@ -8,9 +8,12 @@
     @foreach($requestParams as $name => $value)
         <input type="hidden" name="{{ htmlentities($name) }}" value="{{ htmlentities($value) }}">
     @endforeach
+    <button type="submit">Click here to proceed to payment if you are not automatically redirected</button>
 </form>
 <script>
-    document.frm.submit();
+    window.onload = function () {
+        document.frm.submit();
+    };
 </script>
 </body>
 </html>
