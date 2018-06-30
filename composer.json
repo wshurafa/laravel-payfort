@@ -33,5 +33,15 @@
     "psr-4": {
       "LaravelPayfort\\": "src/"
     }
+  },
+  "extra": {
+    "laravel": {
+        "providers": [
+            "LaravelPayfort\\Providers\\PayfortServiceProvider"
+        ],
+        "aliases": {
+            "Payfort": "LaravelPayfort\\Facades\\Payfort"
+        }
+    }
   }
 }
