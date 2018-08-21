@@ -40,7 +40,7 @@ in your `config/app.php` configuration file:
 
 Also, add the `Payfort` facade to the `aliases` array in your `app` configuration file:
 ```php
-'Payfort' => LaravelPayfort\Facades\Payfort::class
+'Payfort' => LaravelPayfort\Facades\Payfort::class,
 ```
 
 After that, run the following command to publish the configurations file:
