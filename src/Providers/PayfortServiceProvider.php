@@ -16,7 +16,7 @@ class PayfortServiceProvider extends ServiceProvider
     protected $defer = false;
 
     private $configPath = __DIR__ . '/../../config/payfort.php';
-    private $translationsPath = __DIR__ . '/../../resources/lang';
+    private $translationsPath = __DIR__ . '/../../lang';
     private $viewsPath = __DIR__ . '/../../resources/views';
 
     /**
@@ -27,12 +27,11 @@ class PayfortServiceProvider extends ServiceProvider
     public function boot()
     {
         # Add config file to service provider publish command
-        $this->publishes([
-            $this->configPath => config_path('payfort.php'),
-        ], 'config');
-
-        # Load package translation files
-        $this->loadTranslationsFrom($this->translationsPath, 'laravel-payfort');
+        if (app()->runningInConsole()) {
+            $this->publishes([
+                $this->configPath => config_path('payfort.php'),
+            ], 'config');
+        }
 
         # Load package views files
         $this->loadViewsFrom($this->viewsPath, 'laravel-payfort');
@@ -46,11 +45,13 @@ class PayfortServiceProvider extends ServiceProvider
     public function register()
     {
         \Log::debug('Registered');
-        # Merge application and packages configurations
-        $this->mergeConfigFrom(
-            $this->configPath,
-            'payfort'
-        );
+        # Merge application and packages configurations (Only when configurations are not cached)
+        if (! app()->configurationIsCached()) {
+            $this->mergeConfigFrom(
+                $this->configPath,
+                'payfort'
+            );
+        }
 
         $this->app->bind(PayfortAPI::class, function () {
             return new PayfortAPI(config('payfort'));
