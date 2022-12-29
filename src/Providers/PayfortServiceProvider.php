@@ -44,7 +44,6 @@ class PayfortServiceProvider extends ServiceProvider
      */
     public function register()
     {
-        \Log::debug('Registered');
         # Merge application and packages configurations (Only when configurations are not cached)
         if (! app()->configurationIsCached()) {
             $this->mergeConfigFrom(
